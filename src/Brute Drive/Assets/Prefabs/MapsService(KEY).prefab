@@ -141,10 +141,10 @@ MonoBehaviour:
   StaticBatching: 0
   TerrainOptions:
     TerrainMeshMetersPerPoint: 1
-    AltitudePrecision: 0.01
+    AltitudePrecision: 1
   EnableIntersections: 0
   EnableExhaustiveIntersectionReconstruction: 1
-  EnableRoadLattice: 0
+  EnableRoadLattice: 1
   MapPreviewOptions:
     Enable: 0
     Location:
@@ -154,7 +154,7 @@ MonoBehaviour:
   MetadataOptions:
     Method: 1
     MetadataRegister: {fileID: 0}
-  ZoomLevel: 5
+  ZoomLevel: 17
   _CacheOptions:
     BasePath: 
     Directory: Google.Maps
