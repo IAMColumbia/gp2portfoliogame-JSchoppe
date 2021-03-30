@@ -1,1 +1,23 @@
 Release Notes version 1 POC
+============================
+Included in this Release
+============================
+Things that kind of half-assedly work:
+ - Vehicle Class, Vehicle Instantiation
+ - Mobile Controls Setup
+ - Google Maps Generation
+ - Stage Route Generation
+   - Target Generation Length
+   - Blockades with Colliders
+
+Things that are fucking jank-ass broken:
+ - You get stuck on the colliders
+   - The AI works, but is fucking dumb and likes to drive
+  circles around the player. Didn't add them to the build scene
+  because I figured they would just get stuck on the colliders
+   - No, they do not damage the player, thanks for asking
+ - Didn't add in the trigger at the end that resets the scene
+because no one in their right mind is going to reach the end
+of this boring ass demo
+ - No penalty for going off road
+ - The code cleanliness (some of it is fucking atrocious)
