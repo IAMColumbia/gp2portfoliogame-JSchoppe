@@ -49,7 +49,7 @@ namespace BruteDrive.Designer.Unity.Cameras
         {
             UpdateRotationDegrees();
 
-            Vector3 target = new Vector3(Vehicle.Position.x, 0f, Vehicle.Position.y);
+            Vector3 target = new Vector3(Vehicle.Location.x, 0f, Vehicle.Location.y);
 
             float boomInterpolant = Mathf.Clamp01(
                 Mathf.InverseLerp(

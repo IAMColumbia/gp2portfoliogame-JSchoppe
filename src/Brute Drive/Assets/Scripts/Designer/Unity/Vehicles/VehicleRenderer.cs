@@ -12,6 +12,8 @@ namespace BruteDrive.Designer.Unity
     public sealed class VehicleRenderer : MonoBehaviour, IVehicleRenderer
     {
         #region Inspector Fields
+        [Tooltip("The transform that will be scaled along the x axis to reflect health.")]
+        [SerializeField] private Transform healthMeterTransform = default;
         [Tooltip("All the wheels that will spin around their local x axes.")]
         [SerializeField] private Transform[] allWheels = default;
         [Tooltip("All the wheels on the vehicle that will rotate their local forwards direction.")]
@@ -43,6 +45,19 @@ namespace BruteDrive.Designer.Unity
             {
                 transform.forward = new Vector3(value.x, 0f, value.y);
             }
+        }
+
+        public float Health
+        {
+            set => healthMeterTransform.localScale = new Vector3(
+                value,
+                healthMeterTransform.localScale.y,
+                healthMeterTransform.localScale.z);
+        }
+
+        public void OnDestroyed()
+        {
+            
         }
 
         void Awake()

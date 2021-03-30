@@ -18,8 +18,8 @@ namespace BruteDrive.StageGeneration
         [Tooltip("The coordinates of the location to load.")]
         [SerializeField] private LatLng coordinates = default;
 
-        [SerializeField] private Material filler = default;
-        [SerializeField] private Material other = default;
+        [SerializeField] private Material road = default;
+        [SerializeField] private Material buildings = default;
 
         [SerializeField] private int desiredNodes = 300;
         [SerializeField] private float scanStep = 50f;
@@ -61,29 +61,29 @@ namespace BruteDrive.StageGeneration
             {
                 ExtrudedStructureStyle = new ExtrudedStructureStyle.Builder
                 {
-                    WallMaterial = filler,
-                    RoofMaterial = filler
+                    WallMaterial = buildings,
+                    RoofMaterial = road
                 }.Build(),
                 ModeledStructureStyle = new ModeledStructureStyle.Builder
                 {
-                    Material = filler
+                    Material = road
                 }.Build(),
                 RegionStyle = new RegionStyle.Builder
                 {
-                    FillMaterial = other
+                    FillMaterial = buildings
                 }.Build(),
                 AreaWaterStyle = new AreaWaterStyle.Builder
                 {
-                    FillMaterial = filler
+                    FillMaterial = road
                 }.Build(),
                 LineWaterStyle = new LineWaterStyle.Builder
                 {
-                    Material = filler
+                    Material = road
                 }.Build(),
                 SegmentStyle = new SegmentStyle.Builder
                 {
-                    Material = filler,
-                    IntersectionMaterial = filler,
+                    Material = road,
+                    IntersectionMaterial = road,
                     Width = 7.0f
                 }.Build(),
             };
