@@ -10,14 +10,14 @@ Things that kind of half-assedly work:
    - Target Generation Length
    - Blockades with Colliders
 
-Things that are fucking jank-ass broken:
+Things that are jank-ass broken:
  - You get stuck on the colliders
-   - The AI works, but is fucking dumb and likes to drive
+   - The AI works, but is dumb and likes to drive
   circles around the player. Didn't add them to the build scene
   because I figured they would just get stuck on the colliders
    - No, they do not damage the player, thanks for asking
  - Didn't add in the trigger at the end that resets the scene
 because no one in their right mind is going to reach the end
-of this boring ass demo
+of this boring demo
  - No penalty for going off road
- - The code cleanliness (some of it is fucking atrocious)
+ - The code cleanliness (some of it is atrocious)
