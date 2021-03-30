@@ -1,5 +1,6 @@
 ﻿using BruteDrive.AI.Actors;
 using BruteDrive.Designer.Unity.Vehicles;
+using BruteDrive.StageGeneration;
 using BruteDrive.Utilities.Unity.Extensions;
 using BruteDrive.Vehicles;
 using System.Collections;
@@ -14,6 +15,8 @@ namespace BruteDrive.AI.Managers
     /// </summary>
     public sealed class CruiserManager : MonoBehaviour
     {
+
+        [SerializeField] private RouteGenerator route = default;
 
         [SerializeField] private VehicleInstance cruiserTarget = default;
 
@@ -48,7 +51,6 @@ namespace BruteDrive.AI.Managers
         private void Awake()
         {
             deployedCruisers = new List<CruiserAgent>();
-            TrySpawnCruiser();
         }
 
         private void TrySpawnCruiser()

@@ -35,8 +35,13 @@ namespace BruteDrive.Designer.Unity.Vehicles
             else
             {
                 Vehicle.Location += offset * hitResults[0].fraction;
-                hit = hitResults[0].collider.GetComponent<VehicleCollider>().Vehicle;
-                return true;
+                VehicleCollider otherVehicle = hitResults[0].collider.GetComponent<VehicleCollider>();
+
+                if (otherVehicle != null)
+                    hit = otherVehicle.Vehicle;
+                else
+                    hit = null;
+                return hit != null;
             }
         }
 
