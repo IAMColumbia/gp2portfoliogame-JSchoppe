@@ -167,7 +167,7 @@ MonoBehaviour:
   renderer: {fileID: 2023186029066793472}
   collider: {fileID: 1120528867892326535}
   ambientFriction: 1
-  maxSteerFriction: 7
+  maxSteerFriction: 6
   steerDegreesPerSecond: 50
   maxSteerDegrees: 30
   steerRadiusFactor: 5

@@ -7,16 +7,25 @@ using Google.Maps.Coord;
 using Google.Maps.Event;
 using Google.Maps.Feature.Style;
 using Google.Maps.Unity.Intersections;
+using BruteDrive.Utilities.Unity.Extensions;
 
 namespace BruteDrive.StageGeneration
 {
     public sealed class RouteGenerator : MonoBehaviour
     {
+        public event Action Generated;
+
 
         [Tooltip("The service provider for the maps API.")]
         [SerializeField] private MapsService mapsService = default;
 
+        [Tooltip("The object used to block unused paths.")]
+        [SerializeField] private GameObject blockadePrefab = default;
+        [SerializeField] private float blockadeDepth = 5f;
+
         [SerializeField] private float desiredDistance = 300f;
+
+        public Vector3[] CruiserSpawnPoints { get; private set; }
 
         public RoadLatticeNode[] GenerateRoute()
         {
@@ -35,6 +44,26 @@ namespace BruteDrive.StageGeneration
             // Kick off recursive algorithm to find
             // a suitable path for the desired distance.
             ExploreJunctionsRecursive(current);
+
+            // Now that we have the best path,
+            // place some blockades along the path.
+            for (int i = 0; i < bestPath.Length; i++)
+            {
+                RoadLatticeNode priorNode = (i > 0) ? bestPath[i - 1] : null;
+                RoadLatticeNode nextNode = (i < bestPath.Length - 1) ? bestPath[i + 1] : null; 
+                foreach (RoadLatticeNode node in bestPath[i].Neighbors)
+                {
+                    if (node != priorNode && node != nextNode)
+                    {
+                        // Place a blockade partway down this path.
+                        Instantiate(blockadePrefab,
+                            (bestPath[i].Location + ((node.Location - bestPath[i].Location).normalized * blockadeDepth)).TopDownUnflatten(),
+                            Quaternion.LookRotation((bestPath[i].Location - node.Location).TopDownUnflatten()));
+                    }
+                }
+            }
+
+            Generated?.Invoke();
             return bestPath;
 
             bool ExploreJunctionsRecursive(RoadLatticeNode currentNode)
