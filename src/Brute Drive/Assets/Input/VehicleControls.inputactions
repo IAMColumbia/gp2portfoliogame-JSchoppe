@@ -1,0 +1,269 @@
+{
+    "name": "VehicleControls",
+    "maps": [
+        {
+            "name": "BasicVehicle",
+            "id": "276ecc98-efde-416c-a243-581d122be938",
+            "actions": [
+                {
+                    "name": "Gas Pedal",
+                    "type": "Value",
+                    "id": "5e09e333-e81c-434e-b83e-42601cde9ed1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Brake Pedal",
+                    "type": "Value",
+                    "id": "5d802148-a219-4db4-a03b-4a01d02ea4b1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Steering",
+                    "type": "Value",
+                    "id": "0c959967-780b-4c26-8aca-59df0af74bb6",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2e711a4e-bd46-4c7c-9328-3874c01e9284",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard WASD",
+                    "id": "9a914120-bc12-49d0-abe3-176ea47dc665",
+                    "path": "1DAxis(minValue=0,whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "0b807427-752e-423b-9622-205c40082fec",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "6262e53f-1aac-4196-9ed6-76f7287dfb4b",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Keyboard Arrows",
+                    "id": "ac964357-abfb-4a46-894c-ea2edf45e388",
+                    "path": "1DAxis(minValue=0,whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "726fcb0e-4249-41d7-b481-4fde0620ac22",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "5b1bec6d-defa-4539-a639-485001f2b3c1",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Gas Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "6e8bad39-ca7b-49b8-902f-2472d94e5a25",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard WASD",
+                    "id": "db49a68f-e430-4cbb-b733-b4dc7ef9a21e",
+                    "path": "1DAxis(minValue=0,whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "fcb103da-dcd7-4e53-8b0b-09e8bb663367",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "a5c7d332-be55-48a9-96fd-52c05e8ae58a",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Keyboard Arrows",
+                    "id": "247f56c6-2fa4-4ddd-abf5-8a91519850c6",
+                    "path": "1DAxis(minValue=0,whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "b271f279-9d9f-4e7f-b0cb-f1804fe74485",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "748c458e-8ae1-4cdb-91d2-764326429d88",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Brake Pedal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "01d01257-ec65-4f37-923a-b009aa47998d",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Keyboard WASD",
+                    "id": "09c606b3-d3f9-4861-a32b-700eb6829321",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "cceca1de-53af-45ed-922f-000df8773ecb",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "11e98263-cbe6-49c1-83ff-beb841c4e509",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Keyboard Arrows",
+                    "id": "1f4f623d-cbdd-4525-a71a-1fb55951543c",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a0fc39d5-e067-4d12-8969-c70fd89f38b2",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "cfaeaaf0-a827-4823-ac71-7e19c443f4e2",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
