@@ -10,17 +10,41 @@ namespace BruteDrive.AICore
     public abstract class StateMachine<TStateKey> : ITickable
     {
         #region State Fields
-        private readonly Dictionary<TStateKey, IState> states;
+        protected Dictionary<TStateKey, IState> states;
         private TStateKey currentState;
         #endregion
         #region Constructors
         /// <summary>
-        /// Creates a new state machine with the given states and default state.
+        /// Creates a new empty state machine.
         /// </summary>
-        /// <param name="states">The states accessible to this machine.</param>
-        public StateMachine(Dictionary<TStateKey, IState> states)
+        public StateMachine()
         {
-            this.states = states;
+            states = new Dictionary<TStateKey, IState>();
+        }
+        #endregion
+        #region Add States
+        /// <summary>
+        /// Adds a new state to the state machine.
+        /// If one already exists it will be overwritten.
+        /// </summary>
+        /// <param name="state">The state identifier.</param>
+        /// <param name="implementation">The state implementation.</param>
+        public void AddState(TStateKey state, IState implementation)
+        {
+            if (CurrentState.Equals(state))
+            {
+                // Exit out of the state and reimplement the
+                // new version of the state to enter.
+                this[currentState].StateExited();
+                states[state] = implementation;
+                this[currentState].StateEntered();
+            }
+            else if (states.ContainsKey(state))
+                // Reimplement the state.
+                states[state] = implementation;
+            else
+                // Add the state.
+                states.Add(state, implementation);
         }
         #endregion
         #region State Events
@@ -41,7 +65,7 @@ namespace BruteDrive.AICore
                 // Is this a new state?
                 if (!currentState.Equals(value))
                 {
-                    // Exit current state
+                    // Exit current state.
                     states[currentState].StateExited();
                     currentState = value;
                     // Enter new state.

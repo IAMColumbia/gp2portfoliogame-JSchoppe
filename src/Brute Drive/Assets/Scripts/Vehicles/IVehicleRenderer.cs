@@ -20,6 +20,16 @@ namespace BruteDrive.Vehicles
         /// Updates the steer angle of the rendered vehicle.
         /// </summary>
         float SteerAngle { set; }
+        /// <summary>
+        /// Updates the rendered health for this vehicle.
+        /// </summary>
+        float Health { set; }
+        #endregion
+        #region Method Requirements
+        /// <summary>
+        /// Called once when the vehicle has been destroyed.
+        /// </summary>
+        void OnDestroyed();
         #endregion
     }
 }
