@@ -121,12 +121,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &167787937 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3105376312462250761, guid: dabc9c02397a22f4883ee126b31782d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 3105376312761236027}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &334515495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7433380498032160512, guid: 43ba34a33c72eed44974918af7db1ebd,
@@ -331,6 +325,7 @@ MonoBehaviour:
   lookElevation: 3
   speedThreshold: 1
   degreesPerSecond: 180
+  unitsPerSecond: 1
   minBoomDistance: 6
   minBoomHeight: 4
   maxBoomDistance: 10
@@ -420,6 +415,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1216710642 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1100533358691862122, guid: dabc9c02397a22f4883ee126b31782d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 3105376312761236027}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1251508654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -546,11 +547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapsService: {fileID: 1509733084}
+  roadMaterial: {fileID: 0}
+  buildingMaterial: {fileID: 0}
   coordinates:
     _Lat: 46.4531264614356
     _Lng: -90.18028420570363
-  road: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
-  buildings: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000
@@ -627,6 +628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1400118780}
+  camera: {fileID: 963194229}
   generator: {fileID: 1498077214}
   routeGenerator: {fileID: 1498077215}
   cruiserManager: {fileID: 334515495}
@@ -903,11 +905,21 @@ PrefabInstance:
         type: 3}
       propertyPath: parent
       value: 
-      objectReference: {fileID: 167787937}
+      objectReference: {fileID: 1216710642}
     - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
         type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
         type: 3}

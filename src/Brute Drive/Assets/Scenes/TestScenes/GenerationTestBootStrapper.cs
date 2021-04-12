@@ -1,5 +1,5 @@
-﻿using BruteDrive.Designer.Unity.Vehicles;
-using BruteDrive.StageGeneration;
+﻿using BruteDriveUnity.Designer.Vehicles;
+using BruteDriveUnity.StageGeneration;
 using Google.Maps.Unity.Intersections;
 using System;
 using System.Collections;

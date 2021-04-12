@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using BruteDrive.Designer.Unity.Vehicles;
+﻿using UnityEngine;
+using BruteDriveUnity.Designer.Vehicles;
 
 namespace BruteDrive.BootStrappers
 {
@@ -10,6 +8,7 @@ namespace BruteDrive.BootStrappers
     /// </summary>
     public sealed class AITestBootStrapper : MonoBehaviour
     {
+        [Tooltip("The player controlled vehicle.")]
         [SerializeField] private VehicleInstance player = default;
 
 

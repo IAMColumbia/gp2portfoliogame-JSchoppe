@@ -109,8 +109,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drivingTransform: {fileID: 7572383803537015350}
-  targetMaterial: {fileID: 2100000, guid: 5790939f14f0cd24a9354b477657b7c8, type: 2}
-  scale: 0.1
+  targetRenderer: {fileID: 7572383803537015344}
+  unitsPerUV: 10
 --- !u!114 &7572383803537015346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: {fileID: 0}
-  gameLoopType: 0
+  gameLoopType: 1
   matchPositionX: 1
   matchPositionY: 0
   matchPositionZ: 1
