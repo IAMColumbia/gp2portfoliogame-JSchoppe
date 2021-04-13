@@ -1,4 +1,4 @@
-﻿using UnityEngine; // Depends on Vector2.
+﻿using GameLibrary.Math;
 
 namespace BruteDriveCore.Vehicles
 {

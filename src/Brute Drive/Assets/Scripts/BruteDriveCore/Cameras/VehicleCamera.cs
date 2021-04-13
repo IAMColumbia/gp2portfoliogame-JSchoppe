@@ -1,8 +1,8 @@
-﻿using UnityEngine; // Depends on Mathf, Vector2.
-using GameLibrary;
+﻿using GameLibrary;
+using GameLibrary.Math;
 using GameLibrary.Transforms;
 using BruteDriveCore.Vehicles;
-using UnityLibrary.TopDown2D;
+using UnityLibrary.TopDown2D; // TODO figure out a better way to remove this dependency.
 
 namespace BruteDriveCore.Cameras
 {
@@ -27,7 +27,7 @@ namespace BruteDriveCore.Cameras
         private float fastBoomElevation;
         // State fields.
         private float rotationDegrees;
-        private Vector2 boomLocation;
+        private UnityEngine.Vector2 boomLocation;
         #endregion
         #region Constructors
         /// <summary>
@@ -43,7 +43,7 @@ namespace BruteDriveCore.Cameras
             // Set default state to behind the vehicle
             // assuming minimum speed.
             rotationDegrees = 180f;
-            boomLocation = new Vector2(slowBoomDepth, slowBoomElevation);
+            boomLocation = new UnityEngine.Vector2(slowBoomDepth, slowBoomElevation);
         }
         #endregion
         #region Vehicle Property
@@ -72,7 +72,7 @@ namespace BruteDriveCore.Cameras
         public float AnimationDegreesPerSecond
         {
             get => animationDegreesPerSecond;
-            set => animationDegreesPerSecond = Mathf.Max(0f, value);
+            set => animationDegreesPerSecond = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The speed at which the camera draws in and out
@@ -81,7 +81,7 @@ namespace BruteDriveCore.Cameras
         public float AnimationUnitsPerSecond
         {
             get => animationUnitsPerSecond;
-            set => animationUnitsPerSecond = Mathf.Max(0f, value);
+            set => animationUnitsPerSecond = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The elevation of the focal point of the vehicle.
@@ -89,7 +89,7 @@ namespace BruteDriveCore.Cameras
         public float FocalElevation
         {
             get => focalElevation;
-            set => focalElevation = Mathf.Max(0f, value);
+            set => focalElevation = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The threshold that is considered moving.
@@ -97,7 +97,7 @@ namespace BruteDriveCore.Cameras
         public float SpeedThreshold
         {
             get => speedThreshold;
-            set => speedThreshold = Mathf.Max(0f, value);
+            set => speedThreshold = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The distance of the boom from the vehicle
@@ -106,7 +106,7 @@ namespace BruteDriveCore.Cameras
         public float SlowBoomDepth
         {
             get => slowBoomDepth;
-            set => slowBoomDepth = Mathf.Max(0f, value);
+            set => slowBoomDepth = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The elevation of the boom from the vehicle
@@ -115,7 +115,7 @@ namespace BruteDriveCore.Cameras
         public float SlowBoomElevation
         {
             get => slowBoomElevation;
-            set => slowBoomElevation = Mathf.Max(0f, value);
+            set => slowBoomElevation = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The distance of the boom from the vehicle
@@ -124,7 +124,7 @@ namespace BruteDriveCore.Cameras
         public float FastBoomDepth
         {
             get => fastBoomDepth;
-            set => fastBoomDepth = Mathf.Max(0f, value);
+            set => fastBoomDepth = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The elevation of the boom from the vehicle
@@ -133,7 +133,7 @@ namespace BruteDriveCore.Cameras
         public float FastBoomElevation
         {
             get => fastBoomElevation;
-            set => fastBoomElevation = Mathf.Max(0f, value);
+            set => fastBoomElevation = FloatMath.Max(0f, value);
         }
         #endregion
         #region Camera Tick Routine
@@ -141,16 +141,17 @@ namespace BruteDriveCore.Cameras
         {
             // Get an interpolant for how fast the vehicle
             // is moving over its max speed.
-            float speedInterpolant = Mathf.Clamp01(
-                Mathf.InverseLerp(
+            float speedInterpolant = FloatMath.Clamp(
+                FloatMath.InverseLerp(
                     speedThreshold,
                     Vehicle.ForwardsMaxSpeed,
-                    Mathf.Abs(Vehicle.Speed)));
+                    FloatMath.Abs(Vehicle.Speed))
+                , 0f, 1f);
             // Ease towards where the boom should be locally.
-            Vector2 boomTarget = new Vector2(
-                Mathf.Lerp(slowBoomDepth, fastBoomDepth, speedInterpolant),
-                Mathf.Lerp(slowBoomElevation, fastBoomElevation, speedInterpolant));
-            boomLocation = Vector2.MoveTowards(boomLocation,
+            UnityEngine.Vector2 boomTarget = new UnityEngine.Vector2(
+                FloatMath.Lerp(slowBoomDepth, fastBoomDepth, speedInterpolant),
+                FloatMath.Lerp(slowBoomElevation, fastBoomElevation, speedInterpolant));
+            boomLocation = UnityEngine.Vector2.MoveTowards(boomLocation,
                 boomTarget, deltaTime * animationUnitsPerSecond);
             // Is the vehicle traveling in a negative
             // direction? If so pivot the camera behind
@@ -158,15 +159,15 @@ namespace BruteDriveCore.Cameras
             float targetDegrees =
                 (Vehicle.Speed < -speedThreshold) ? 0f : 180f;
             // Ease gradually.
-            rotationDegrees = Mathf.MoveTowards(rotationDegrees,
+            rotationDegrees = FloatMath.MoveTowards(rotationDegrees,
                 targetDegrees, deltaTime * animationDegreesPerSecond);
             // Post the transform changes to the camera.
             Vector3 target = Vehicle.Location.TopDownUnflatten();
             camera.Position = target + new Vector3(
-                Mathf.Sin((Vehicle.Angle + rotationDegrees) * Mathf.Deg2Rad) * boomLocation.x,
-                Mathf.Lerp(slowBoomElevation, boomLocation.y, speedInterpolant),
-                Mathf.Cos((Vehicle.Angle + rotationDegrees) * Mathf.Deg2Rad) * boomLocation.x);
-            camera.Forwards = (target + Vector3.up * focalElevation) - camera.Position;
+                FloatMath.SinDeg(Vehicle.Angle + rotationDegrees) * boomLocation.x,
+                FloatMath.Lerp(slowBoomElevation, boomLocation.y, speedInterpolant),
+                FloatMath.CosDeg(Vehicle.Angle + rotationDegrees) * boomLocation.x);
+            camera.Forwards = (target + Vector3.Up() * focalElevation) - camera.Position;
         }
         #endregion
     }

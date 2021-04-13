@@ -1,6 +1,6 @@
 ﻿using GameLibrary;
+using GameLibrary.Math;
 using GameLibrary.CSharpExtensions;
-using UnityEngine; // Depends on Mathf and Vector2.
 
 namespace BruteDriveCore.Vehicles
 {
@@ -37,7 +37,7 @@ namespace BruteDriveCore.Vehicles
         private float angle;
         private float speed;
         private float steerAngle;
-        private Vector2 forwards;
+        private UnityEngine.Vector2 forwards;
         #endregion
         #region Broadcasters
         /// <summary>
@@ -59,7 +59,7 @@ namespace BruteDriveCore.Vehicles
             speed = 0f;
             angle = 0f;
             steerAngle = 0f;
-            forwards = Vector2.up;
+            forwards = UnityEngine.Vector2.up;
             hasDestroyed = false;
             // Set initial property values.
             ambientFriction = 0f;
@@ -82,7 +82,7 @@ namespace BruteDriveCore.Vehicles
         public float AmbientFriction
         {
             get => ambientFriction;
-            set => ambientFriction = Mathf.Max(0f, value);
+            set => ambientFriction = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The added friction deceleration when the vehicle's
@@ -92,7 +92,7 @@ namespace BruteDriveCore.Vehicles
         public float MaxSteerFriction
         {
             get => maxSteerFriction;
-            set => maxSteerFriction = Mathf.Max(0f, value);
+            set => maxSteerFriction = FloatMath.Max(0f, value);
         }
         #endregion
         #region Properties Steering
@@ -103,7 +103,7 @@ namespace BruteDriveCore.Vehicles
         public float SteerDegreesPerSecond
         {
             get => steerDegreesPerSecond;
-            set => steerDegreesPerSecond = Mathf.Max(0f, value);
+            set => steerDegreesPerSecond = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// Controls the max angle in degrees that the wheels
@@ -112,7 +112,7 @@ namespace BruteDriveCore.Vehicles
         public float MaxSteerAngle
         {
             get => maxSteerAngle;
-            set => maxSteerAngle = Mathf.Max(0f, value);
+            set => maxSteerAngle = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// Controls how wide the vehicle will turn relative to its speed.
@@ -120,7 +120,7 @@ namespace BruteDriveCore.Vehicles
         public float SteerRadiusFactor
         {
             get => steerRadiusFactor;
-            set => steerRadiusFactor = Mathf.Max(float.Epsilon, value);
+            set => steerRadiusFactor = FloatMath.Max(float.Epsilon, value);
         }
         #endregion
         #region Properties Acceleration
@@ -131,7 +131,7 @@ namespace BruteDriveCore.Vehicles
         public float ForwardsAcceleration
         {
             get => forwardsAcceleration;
-            set => forwardsAcceleration = Mathf.Max(0f, value);
+            set => forwardsAcceleration = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// Controls the acceleration in units per second squared
@@ -140,7 +140,7 @@ namespace BruteDriveCore.Vehicles
         public float ReverseAcceleration
         {
             get => reverseAcceleration;
-            set => reverseAcceleration = Mathf.Max(0f, value);
+            set => reverseAcceleration = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The maximum vehicle speed when in drive.
@@ -148,7 +148,7 @@ namespace BruteDriveCore.Vehicles
         public float ForwardsMaxSpeed
         {
             get => forwardsMaxSpeed;
-            set => forwardsMaxSpeed = Mathf.Max(0f, value);
+            set => forwardsMaxSpeed = FloatMath.Max(0f, value);
         }
         /// <summary>
         /// The maximum vehicle speed when in reverse.
@@ -156,7 +156,7 @@ namespace BruteDriveCore.Vehicles
         public float ReverseMaxSpeed
         {
             get => reverseMaxSpeed;
-            set => reverseMaxSpeed = Mathf.Max(0f, value);
+            set => reverseMaxSpeed = FloatMath.Max(0f, value);
         }
         #endregion
         #region Properties Damage
@@ -170,7 +170,7 @@ namespace BruteDriveCore.Vehicles
             set
             {
                 // Update value and rendered health.
-                health = Mathf.Clamp(value, 0f, 1f);
+                health = FloatMath.Clamp(value, 0f, 1f);
                 if (Renderer != null)
                     Renderer.Health = health;
                 // Check if the vehicle should be destroyed.
@@ -184,7 +184,7 @@ namespace BruteDriveCore.Vehicles
         public float ImpactResistance
         {
             get => impactResistance;
-            set => impactResistance = Mathf.Max(0f, value);
+            set => impactResistance = FloatMath.Max(0f, value);
         }
         #endregion
         #region Properties Movement
@@ -195,7 +195,7 @@ namespace BruteDriveCore.Vehicles
         public float Speed
         {
             get => speed;
-            set => speed = Mathf.Clamp(
+            set => speed = FloatMath.Clamp(
                 value, -ReverseMaxSpeed, ForwardsMaxSpeed);
         }
         /// <summary>
@@ -209,19 +209,19 @@ namespace BruteDriveCore.Vehicles
                 // Keep the angle between 0-360.
                 angle = value.WrappedBetween(0f, 360f);
                 // Update forwards.
-                forwards = new Vector2(
-                    Mathf.Sin(angle * Mathf.Deg2Rad),
-                    Mathf.Cos(angle * Mathf.Deg2Rad));
+                forwards = new UnityEngine.Vector2(
+                    FloatMath.SinDeg(angle),
+                    FloatMath.CosDeg(angle));
             }
         }
         /// <summary>
         /// The current top down location of the vehicle in units.
         /// </summary>
-        public Vector2 Location { get; set; }
+        public UnityEngine.Vector2 Location { get; set; }
         /// <summary>
         /// The velocity vector of the vehicle in units per second.
         /// </summary>
-        public Vector2 Velocity => forwards * speed;
+        public UnityEngine.Vector2 Velocity => forwards * speed;
         #endregion
         #region Properties Optional Components
         /// <summary>
@@ -243,7 +243,7 @@ namespace BruteDriveCore.Vehicles
         /// If the impact is strong enough it will damage the vehicle.
         /// </summary>
         /// <param name="impactVector">The direction and magnitude of the impact.</param>
-        public void ApplyImpact(Vector2 impactVector)
+        public void ApplyImpact(UnityEngine.Vector2 impactVector)
         {
             
         }
@@ -284,11 +284,11 @@ namespace BruteDriveCore.Vehicles
             // Move towards the desired steer direction,
             // making sure not to overshoot it.
             if (steerTarget > steerAngle)
-                steerAngle = Mathf.Min(steerAngle + steerDelta, steerTarget);
+                steerAngle = FloatMath.Min(steerAngle + steerDelta, steerTarget);
             else if (steerTarget < steerAngle)
-                steerAngle = Mathf.Max(steerAngle - steerDelta, steerTarget);
+                steerAngle = FloatMath.Max(steerAngle - steerDelta, steerTarget);
             // Enforce limit on steering.
-            steerAngle = Mathf.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
+            steerAngle = FloatMath.Clamp(steerAngle, -maxSteerAngle, maxSteerAngle);
             // Apply steering to the angle of the vehicle.
             // This is done relative to the current speed of the
             // vehicle to prevent pivoting in place.
@@ -304,11 +304,11 @@ namespace BruteDriveCore.Vehicles
             // Apply friction to speed before moving.
             float friction = deltaTime *
                 (ambientFriction +
-                Mathf.Abs(steerAngle) / maxSteerAngle * maxSteerFriction);
+                FloatMath.Abs(steerAngle) / maxSteerAngle * maxSteerFriction);
             if (Speed > 0f)
-                Speed = Mathf.Max(0f, speed - friction);
+                Speed = FloatMath.Max(0f, speed - friction);
             else
-                Speed = Mathf.Min(0f, speed + friction);
+                Speed = FloatMath.Min(0f, speed + friction);
             // Move the body along its forward path.
             if (Collider == null)
                 Location += forwards * deltaTime * Speed;

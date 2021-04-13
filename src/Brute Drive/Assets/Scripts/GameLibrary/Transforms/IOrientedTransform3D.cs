@@ -1,4 +1,4 @@
-﻿using UnityEngine; // TODO adapt Vector3.
+﻿using GameLibrary.Math;
 
 namespace GameLibrary.Transforms
 {

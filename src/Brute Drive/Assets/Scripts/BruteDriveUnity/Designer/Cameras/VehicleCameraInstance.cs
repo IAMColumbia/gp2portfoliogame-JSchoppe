@@ -54,7 +54,7 @@ namespace BruteDriveUnity.Designer.Cameras
         /// <summary>
         /// Linked to the transform global position.
         /// </summary>
-        public Vector3 Position
+        public GameLibrary.Math.Vector3 Position
         {
             get => transform.position;
             set => transform.position = value;
@@ -62,7 +62,7 @@ namespace BruteDriveUnity.Designer.Cameras
         /// <summary>
         /// Linked to the transform forwards direction.
         /// </summary>
-        public Vector3 Forwards
+        public GameLibrary.Math.Vector3 Forwards
         {
             get => transform.forward;
             set => transform.forward = value;

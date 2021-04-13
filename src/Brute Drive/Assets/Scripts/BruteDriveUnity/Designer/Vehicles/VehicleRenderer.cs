@@ -20,7 +20,7 @@ namespace BruteDriveUnity.Designer.Vehicles
         [SerializeField] private Transform[] turningWheels = default;
         #endregion
 
-        public Vector2 Position
+        public GameLibrary.Math.Vector2 Position
         {
             set
             {
@@ -39,7 +39,7 @@ namespace BruteDriveUnity.Designer.Vehicles
             }
         }
 
-        public Vector2 Forwards
+        public GameLibrary.Math.Vector2 Forwards
         {
             set
             {

@@ -1,4 +1,4 @@
-﻿using UnityEngine; // TODO adapt Vector2, remove Mathf dependency.
+﻿using GameLibrary.Math;
 
 namespace GameLibrary.Input.Touch
 {
@@ -23,7 +23,7 @@ namespace GameLibrary.Input.Touch
             // Is the touched location within the radius
             // of the circle?
             return
-                (screenPosition - Location).sqrMagnitude
+                (screenPosition - Location).GetLengthSquared()
                 < radiusSquared;
         }
         #endregion
@@ -37,11 +37,11 @@ namespace GameLibrary.Input.Touch
         /// </summary>
         public float Radius
         {
-            get => Mathf.Sqrt(radiusSquared);
+            get => FloatMath.Sqrt(radiusSquared);
             set
             {
                 // Disallow radius of less than zero.
-                value = Mathf.Max(value, 0f);
+                value = FloatMath.Max(value, 0f);
                 radiusSquared = value * value;
             }
         }

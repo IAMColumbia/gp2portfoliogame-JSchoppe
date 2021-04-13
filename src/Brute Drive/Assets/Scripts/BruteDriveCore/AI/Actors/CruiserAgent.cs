@@ -161,7 +161,7 @@ namespace BruteDriveCore.AI.Actors
             public void Tick(float deltaTime)
             {
                 // Steer towards the target.
-                float angle = Vector2.SignedAngle(agent.vehicle.Velocity, agent.Target.Location - agent.vehicle.Location);
+                float angle = UnityEngine.Vector2.SignedAngle(agent.vehicle.Velocity, agent.Target.Location - agent.vehicle.Location);
 
                 if (angle > 0f)
                 {
@@ -180,7 +180,7 @@ namespace BruteDriveCore.AI.Actors
                 }
                 else
                 {
-                    if (Vector2.SqrMagnitude(agent.vehicle.Location - agent.Target.Location)
+                    if (UnityEngine.Vector2.SqrMagnitude(agent.vehicle.Location - agent.Target.Location)
                         > DesiredDistance * DesiredDistance)
                     {
 

@@ -547,11 +547,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapsService: {fileID: 1509733084}
-  roadMaterial: {fileID: 0}
-  buildingMaterial: {fileID: 0}
+  roadMaterial: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
+  buildingMaterial: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   coordinates:
-    _Lat: 46.4531264614356
-    _Lng: -90.18028420570363
+    _Lat: 41.7993331974584
+    _Lng: -87.60137908303119
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000
@@ -913,16 +913,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -954,21 +944,6 @@ PrefabInstance:
     - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7572383803537015350, guid: 75174142f66ffc946b4ed54d362d8b7f,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
