@@ -15,8 +15,6 @@ certain streets. Reach safety by any means necessary.
 
 </details>
 
-# Development Logs
-
 # Proposal Details
 This section outlines the initial proposal for this project. Each milestone is estimated to be about 3 weeks in duration. With a total project duration of about 2 months.
 
