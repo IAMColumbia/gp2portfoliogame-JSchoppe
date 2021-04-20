@@ -1,11 +1,11 @@
-﻿using BruteDrive.AI.Managers;
-using BruteDrive.Designer.Unity.Vehicles;
-using BruteDrive.StageGeneration;
-using BruteDrive.Vehicles;
-using Google.Maps.Unity.Intersections;
-using System.Collections;
-using System.Collections.Generic;
+﻿using BruteDriveCore.AI.Managers;
+using BruteDriveCore.Vehicles;
 using UnityEngine;
+using Google.Maps.Unity.Intersections;
+using BruteDriveUnity.Designer.Cameras;
+using BruteDriveUnity.Designer.Vehicles;
+using BruteDriveUnity.StageGeneration;
+using UnityLibrary.Input;
 
 namespace BruteDrive.BootStrappers
 {
@@ -15,18 +15,20 @@ namespace BruteDrive.BootStrappers
     public sealed class EscapeMissionBootStrapper : MonoBehaviour, IGeneratorListener
     {
         #region Inspector Fields
-        [Tooltip("The player instanec to load.")]
+        [Tooltip("The player instance to load.")]
         [SerializeField] private VehicleInstance player = default;
+        [Tooltip("The camera tied to the player.")]
+        [SerializeField] private new VehicleCameraInstance camera = default;
         [Tooltip("Script that iteratively generates a stage outwards.")]
         [SerializeField] private MapsIterator generator = default;
         [Tooltip("The route generation script.")]
         [SerializeField] private RouteGenerator routeGenerator = default;
         [Tooltip("The manager for the opponent AI cruisers.")]
         [SerializeField] private CruiserManager cruiserManager = default;
-
+        [Tooltip("Handler for touch input controls.")]
+        [SerializeField] private TouchInputManager inputManager = default;
         #endregion
 
-        // Start is called before the first frame update
         private void Start()
         {
             // Run the map generation.
@@ -35,11 +37,13 @@ namespace BruteDrive.BootStrappers
 
         public void OnFailed()
         {
-            // Fuck.
+            // TODO this needs to be handled in a meaningful way.
         }
 
         public void OnLoaded()
         {
+            inputManager.Initialize();
+
             // Invoke the initialization of the player vehicle.
             RoadLatticeNode[] path = routeGenerator.GenerateRoute();
 
@@ -49,6 +53,8 @@ namespace BruteDrive.BootStrappers
 
             vehicle.Location = path[0].Location;
             vehicle.Angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+
+            camera.Instance();
         }
     }
 }

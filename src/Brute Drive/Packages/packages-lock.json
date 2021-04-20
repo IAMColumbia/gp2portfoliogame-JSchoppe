@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.coffee.csharp-compiler-settings": {
+      "version": "https://github.com/mob-sakai/CSharpCompilerSettingsForUnity.git#1.4.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "21a65331b1cded7ad161499ee760b39be47e092a"
+    },
     "com.unity.collab-proxy": {
       "version": "1.2.16",
       "depth": 0,

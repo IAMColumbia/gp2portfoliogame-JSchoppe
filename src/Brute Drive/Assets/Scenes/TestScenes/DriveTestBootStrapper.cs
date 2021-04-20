@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using BruteDrive.Designer.Unity.Vehicles;
+using BruteDriveUnity.Designer.Vehicles;
 
 namespace BruteDrive.BootStrappers
 {
