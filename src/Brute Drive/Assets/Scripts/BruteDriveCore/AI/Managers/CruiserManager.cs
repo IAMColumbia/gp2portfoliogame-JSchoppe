@@ -52,7 +52,7 @@ namespace BruteDriveCore.AI.Managers
             deployedCruisers = new List<CruiserAgent>();
         }
 
-        private void TrySpawnCruiser()
+        public void TrySpawnCruiser()
         {
             float roomSquared = spawnRoom * spawnRoom;
             foreach (Vector3 location in spawnLocations)

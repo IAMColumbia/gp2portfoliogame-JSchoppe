@@ -319,6 +319,7 @@ MonoBehaviour:
   lookElevation: 3
   speedThreshold: 1
   degreesPerSecond: 180
+  unitsPerSecond: 1
   minBoomDistance: 6
   minBoomHeight: 4
   maxBoomDistance: 10
@@ -465,11 +466,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapsService: {fileID: 1509733084}
+  roadMaterial: {fileID: 0}
+  buildingMaterial: {fileID: 0}
   coordinates:
     _Lat: 42.9815322336555
     _Lng: -82.38766143785818
-  road: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
-  buildings: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000
@@ -486,6 +487,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapsService: {fileID: 1509733084}
+  blockadePrefab: {fileID: 7266577681545469328, guid: fd29e6a7fb50ac740bc37dbbf3015763,
+    type: 3}
+  blockadeDepth: 5
   desiredDistance: 1500
 --- !u!114 &1509733084 stripped
 MonoBehaviour:

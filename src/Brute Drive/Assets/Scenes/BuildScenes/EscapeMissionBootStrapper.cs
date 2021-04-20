@@ -5,6 +5,7 @@ using Google.Maps.Unity.Intersections;
 using BruteDriveUnity.Designer.Cameras;
 using BruteDriveUnity.Designer.Vehicles;
 using BruteDriveUnity.StageGeneration;
+using UnityLibrary.Input;
 
 namespace BruteDrive.BootStrappers
 {
@@ -24,6 +25,8 @@ namespace BruteDrive.BootStrappers
         [SerializeField] private RouteGenerator routeGenerator = default;
         [Tooltip("The manager for the opponent AI cruisers.")]
         [SerializeField] private CruiserManager cruiserManager = default;
+        [Tooltip("Handler for touch input controls.")]
+        [SerializeField] private TouchInputManager inputManager = default;
         #endregion
 
         private void Start()
@@ -39,6 +42,8 @@ namespace BruteDrive.BootStrappers
 
         public void OnLoaded()
         {
+            inputManager.Initialize();
+
             // Invoke the initialization of the player vehicle.
             RoadLatticeNode[] path = routeGenerator.GenerateRoute();
 

@@ -219,6 +219,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &849387670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7433380498032160512, guid: 43ba34a33c72eed44974918af7db1ebd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7433380498187070764}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a449f0f9a57669b4bbe50b802a75ab2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +331,7 @@ MonoBehaviour:
   lookElevation: 3
   speedThreshold: 1
   degreesPerSecond: 180
+  unitsPerSecond: 6
   minBoomDistance: 6
   minBoomHeight: 4
   maxBoomDistance: 10
@@ -464,6 +477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1695363898}
+  camera: {fileID: 963194229}
+  aiSpawner: {fileID: 849387670}
 --- !u!1001 &3105376312761236027
 PrefabInstance:
   m_ObjectHideFlags: 0

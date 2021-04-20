@@ -325,7 +325,7 @@ MonoBehaviour:
   lookElevation: 3
   speedThreshold: 1
   degreesPerSecond: 180
-  unitsPerSecond: 1
+  unitsPerSecond: 5
   minBoomDistance: 6
   minBoomHeight: 4
   maxBoomDistance: 10
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_TrackedDeviceOrientationAction: {fileID: 1025543830046995696, guid: ca9f5fa95ffab41fb9a615ab714db018,
     type: 3}
   m_DeselectOnBackgroundClick: 1
-  m_PointerBehavior: 0
+  m_PointerBehavior: 2
 --- !u!114 &1060558242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -632,6 +632,7 @@ MonoBehaviour:
   generator: {fileID: 1498077214}
   routeGenerator: {fileID: 1498077215}
   cruiserManager: {fileID: 334515495}
+  inputManager: {fileID: 1987958997}
 --- !u!1001 &1917491615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -701,6 +702,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ba7d066a3c0ec0449f2d4d8dd2aeb1c, type: 3}
+--- !u!1 &1987958995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1987958996}
+  - component: {fileID: 1987958997}
+  m_Layer: 0
+  m_Name: TouchInputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1987958996
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987958995}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987958997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987958995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2fe512930a59e748bddae336da4fcb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasNotifier: {fileID: 6487955476545285330}
 --- !u!1001 &3105376312761236027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -889,6 +934,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad, type: 3}
+--- !u!114 &6487955476545285330 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2375680177224802989, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+    type: 3}
+  m_PrefabInstance: {fileID: 6487955476545285329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdf91941c9e9fd4dbd881c6a073a22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7572383803279513506
 PrefabInstance:
   m_ObjectHideFlags: 0

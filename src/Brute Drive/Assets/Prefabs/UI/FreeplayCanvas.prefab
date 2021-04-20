@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6487955476850391935}
   - component: {fileID: 6487955476850391932}
   - component: {fileID: 6487955476850391933}
+  - component: {fileID: 2375680177224802989}
   m_Layer: 5
   m_Name: FreeplayCanvas
   m_TagString: Untagged
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2375680177224802989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487955476850391930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bdf91941c9e9fd4dbd881c6a073a22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4131615525311258564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,6 +119,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6487955476850391934}
     m_Modifications:
+    - target: {fileID: 1069076612615051393, guid: cc0301bcea8218a49adab6e230f5df65,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 6487955476850391935}
+    - target: {fileID: 4998837989239955972, guid: cc0301bcea8218a49adab6e230f5df65,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 6487955476850391935}
     - target: {fileID: 7160630290519879216, guid: cc0301bcea8218a49adab6e230f5df65,
         type: 3}
       propertyPath: m_Pivot.x
@@ -216,6 +239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TouchInputs
       objectReference: {fileID: 0}
+    - target: {fileID: 8288002239570618604, guid: cc0301bcea8218a49adab6e230f5df65,
+        type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 6487955476850391935}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc0301bcea8218a49adab6e230f5df65, type: 3}
 --- !u!224 &6487955476460630516 stripped

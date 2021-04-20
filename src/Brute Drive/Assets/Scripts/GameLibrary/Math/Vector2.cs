@@ -51,6 +51,11 @@ namespace GameLibrary.Math
         /// </summary>
         /// <returns>The squared length.</returns>
         public partial float GetLengthSquared();
+        /// <summary>
+        /// Gets the degrees angle of this vector relative to Y-up.
+        /// </summary>
+        /// <returns>The angle between Y-up and the vector from 0-360 degrees.</returns>
+        public partial float GetDegrees();
         #endregion
         #region Operators
         public static Vector2 operator +(Vector2 lhs, Vector2 rhs)
@@ -89,6 +94,8 @@ namespace GameLibrary.Math
         // Adapt existing methods.
         public partial Vector2 GetNormalized()
             => ((UnityEngine.Vector2)this).normalized;
+        public partial float GetDegrees()
+            => UnityEngine.Mathf.Atan2(x, y) * FloatMath.RAD_2_DEG;
     }
     #endregion
 #endif
