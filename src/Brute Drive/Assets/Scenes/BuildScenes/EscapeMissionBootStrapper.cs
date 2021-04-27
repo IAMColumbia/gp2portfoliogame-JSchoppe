@@ -6,6 +6,11 @@ using BruteDriveUnity.Designer.Cameras;
 using BruteDriveUnity.Designer.Vehicles;
 using BruteDriveUnity.StageGeneration;
 using UnityLibrary.Input;
+using BruteDriveCore.Objectives;
+using UnityLibrary.TickWrappers;
+using System.Collections.Generic;
+using UnityLibrary.TopDown2D;
+using BruteDriveUnity.Designer.Objectives;
 
 namespace BruteDrive.BootStrappers
 {
@@ -29,6 +34,9 @@ namespace BruteDrive.BootStrappers
         [SerializeField] private TouchInputManager inputManager = default;
         #endregion
 
+        [SerializeField] private GameObject waypointPrefab = default;
+        [SerializeField] private float minWaypointDistance = 10f;
+
         private void Start()
         {
             // Run the map generation.
@@ -44,8 +52,41 @@ namespace BruteDrive.BootStrappers
         {
             inputManager.Initialize();
 
-            // Invoke the initialization of the player vehicle.
+            // Generate waypoint rings along the path.
             RoadLatticeNode[] path = routeGenerator.GenerateRoute();
+
+            List<IWaypoint> waypoints = new List<IWaypoint>();
+            float distanceAccumulator = 0f;
+            for (int i = 1; i < path.Length - 1; i++)
+            {
+                distanceAccumulator += Vector2.Distance(
+                    path[i - 1].Location, path[i].Location);
+                if (distanceAccumulator > minWaypointDistance)
+                {
+                    GameObject newWaypoint = Instantiate(
+                        waypointPrefab,
+                         path[i].Location.TopDownUnflatten(),
+                         Quaternion.LookRotation(
+                             path[i + 1].Location.TopDownUnflatten()
+                             - path[i - 1].Location.TopDownUnflatten()));
+                    distanceAccumulator = 0f;
+                    waypoints.Add(newWaypoint.GetComponent<Waypoint>());
+                }
+            }
+            GameObject lastWaypoint = Instantiate(
+                        waypointPrefab,
+                         path[path.Length - 1].Location.TopDownUnflatten(),
+                         Quaternion.LookRotation(
+                             path[path.Length - 1].Location.TopDownUnflatten()
+                             - path[path.Length - 2].Location.TopDownUnflatten()));
+            distanceAccumulator = 0f;
+            waypoints.Add(lastWaypoint.GetComponent<Waypoint>());
+
+
+            WaypointsObjective objective = new WaypointsObjective(
+                UnityTickService.GetProvider(UnityLoopType.FixedUpdate),
+                waypoints.ToArray());
+
 
             Vehicle vehicle = player.Instance();
 
@@ -54,7 +95,17 @@ namespace BruteDrive.BootStrappers
             vehicle.Location = path[0].Location;
             vehicle.Angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
 
+            objective.TriggeringVehicles.Add(vehicle);
+
+            objective.StartObjective();
+            objective.Completed += Completed;
+
             camera.Instance();
+        }
+
+        private void Completed(Objective completedObjective)
+        {
+            // Do some stuff here.
         }
     }
 }

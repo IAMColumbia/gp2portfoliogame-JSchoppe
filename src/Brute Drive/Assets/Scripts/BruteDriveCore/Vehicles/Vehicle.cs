@@ -37,7 +37,7 @@ namespace BruteDriveCore.Vehicles
         private float angle;
         private float speed;
         private float steerAngle;
-        private UnityEngine.Vector2 forwards;
+        private Vector2 forwards;
         #endregion
         #region Broadcasters
         /// <summary>
@@ -217,11 +217,11 @@ namespace BruteDriveCore.Vehicles
         /// <summary>
         /// The current top down location of the vehicle in units.
         /// </summary>
-        public UnityEngine.Vector2 Location { get; set; }
+        public Vector2 Location { get; set; }
         /// <summary>
         /// The velocity vector of the vehicle in units per second.
         /// </summary>
-        public UnityEngine.Vector2 Velocity => forwards * speed;
+        public Vector2 Velocity => forwards * speed;
         #endregion
         #region Properties Optional Components
         /// <summary>

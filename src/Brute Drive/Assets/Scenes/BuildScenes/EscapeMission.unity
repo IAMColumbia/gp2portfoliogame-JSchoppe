@@ -550,8 +550,8 @@ MonoBehaviour:
   roadMaterial: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
   buildingMaterial: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   coordinates:
-    _Lat: 41.7993331974584
-    _Lng: -87.60137908303119
+    _Lat: 44.9766063265859
+    _Lng: -93.22689922668212
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000
@@ -633,6 +633,9 @@ MonoBehaviour:
   routeGenerator: {fileID: 1498077215}
   cruiserManager: {fileID: 334515495}
   inputManager: {fileID: 1987958997}
+  waypointPrefab: {fileID: 3614007108990241553, guid: d466b5dfdaf1fdf40b81d60b40e9ef65,
+    type: 3}
+  minWaypointDistance: 30
 --- !u!1001 &1917491615
 PrefabInstance:
   m_ObjectHideFlags: 0

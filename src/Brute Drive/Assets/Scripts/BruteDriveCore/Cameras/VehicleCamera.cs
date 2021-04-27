@@ -162,7 +162,7 @@ namespace BruteDriveCore.Cameras
             rotationDegrees = FloatMath.MoveTowards(rotationDegrees,
                 targetDegrees, deltaTime * animationDegreesPerSecond);
             // Post the transform changes to the camera.
-            Vector3 target = Vehicle.Location.TopDownUnflatten();
+            Vector3 target = ((UnityEngine.Vector2)Vehicle.Location).TopDownUnflatten();
             camera.Position = target + new Vector3(
                 FloatMath.SinDeg(Vehicle.Angle + rotationDegrees) * boomLocation.x,
                 FloatMath.Lerp(slowBoomElevation, boomLocation.y, speedInterpolant),

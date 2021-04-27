@@ -91,6 +91,8 @@ namespace GameLibrary.Math
             => new Vector2(unityV2.x, unityV2.y);
         public static implicit operator UnityEngine.Vector2(Vector2 coreV2)
             => new UnityEngine.Vector2(coreV2.x, coreV2.y);
+        public static implicit operator UnityEngine.Vector3(Vector2 coreV2)
+            => new UnityEngine.Vector3(coreV2.x, coreV2.y);
         // Adapt existing methods.
         public partial Vector2 GetNormalized()
             => ((UnityEngine.Vector2)this).normalized;

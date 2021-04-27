@@ -173,8 +173,8 @@ MonoBehaviour:
   steerRadiusFactor: 5
   forwardsAcceleration: 8
   reverseAcceleration: 6
-  forwardsMaxSpeed: 12
-  reverseMaxSpeed: 4
+  forwardsMaxSpeed: 18
+  reverseMaxSpeed: 6
   health: 1
   impactResistance: 2
 --- !u!114 &2023186029066793472

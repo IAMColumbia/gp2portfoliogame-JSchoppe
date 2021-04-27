@@ -60,7 +60,7 @@ namespace BruteDriveCore.AI.Managers
                 bool isBlocked = false;
                 foreach (CruiserAgent agent in deployedCruisers)
                 {
-                    if (Vector2.SqrMagnitude(agent.Vehicle.Location - location.TopDownFlatten()) < roomSquared)
+                    if (Vector2.SqrMagnitude((Vector2)agent.Vehicle.Location - location.TopDownFlatten()) < roomSquared)
                     {
                         isBlocked = true;
                         break;
