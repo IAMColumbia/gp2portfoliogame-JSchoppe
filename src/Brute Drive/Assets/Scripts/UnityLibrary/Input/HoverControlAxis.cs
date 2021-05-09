@@ -1,4 +1,5 @@
-﻿using GameLibrary.Input.Touch;
+﻿using GameLibrary;
+using GameLibrary.Input.Touch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace UnityLibrary.Input
 
     public sealed class HoverControlAxis : OnScreenControl
     {
+
         private void Awake()
         {
             UnityEditorWrapper<TouchControl> controlWrapper =
@@ -28,7 +30,10 @@ namespace UnityLibrary.Input
 
         private void OnHoverStateChanged(bool isHovered)
         {
-            SendValueToControl(isHovered ? 1f : 0f);
+            if (isHovered)
+                SendValueToControl(1f);
+            else
+                SendValueToControl(0f);
         }
 
         protected override sealed string controlPathInternal

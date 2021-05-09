@@ -9,8 +9,17 @@ public class CanvasNotifierHOTFIX : MonoBehaviour
 {
     public event Action CanvasChanged;
 
-    private void OnRectTransformDimensionsChange()
+    private int lastFrameWidth = 0;
+    private int lastFrameHeight = 0;
+
+    private void Update()
     {
-        CanvasChanged?.Invoke();
+        if (Screen.width != lastFrameWidth
+            || Screen.height != lastFrameHeight)
+        {
+            CanvasChanged?.Invoke();
+            lastFrameWidth = Screen.width;
+            lastFrameHeight = Screen.height;
+        }
     }
 }

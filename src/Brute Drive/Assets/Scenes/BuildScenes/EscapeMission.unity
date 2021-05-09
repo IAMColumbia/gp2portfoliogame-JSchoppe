@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &281900963 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6487955477785804064, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+    type: 3}
+  m_PrefabInstance: {fileID: 6487955476545285329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1d9e7213a026ff47bd5405e17b6db6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &334515495 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7433380498032160512, guid: 43ba34a33c72eed44974918af7db1ebd,
@@ -550,8 +562,8 @@ MonoBehaviour:
   roadMaterial: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
   buildingMaterial: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   coordinates:
-    _Lat: 44.9766063265859
-    _Lng: -93.22689922668212
+    _Lat: 41.3287402039345
+    _Lng: -89.12796123905008
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000
@@ -825,6 +837,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 281900963}
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RecieveAxis
+      objectReference: {fileID: 0}
+    - target: {fileID: 6487955476300902864, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6487955476850391930, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad,
         type: 3}
       propertyPath: m_Name
@@ -935,7 +977,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0d3a38e9ecb6e564fbd3a35d16a62cad, type: 3}
 --- !u!114 &6487955476545285330 stripped
 MonoBehaviour:

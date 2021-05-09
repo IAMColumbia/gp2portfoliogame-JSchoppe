@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f470f34f11ad84994381a27251d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputControlPath: <Gamepad>/leftStick/up
+  inputControlPath: <Keyboard>/w
 --- !u!1 &7160630290519879217
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +139,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7160630290519879216}
-  - component: {fileID: 7160630290519879219}
   m_Layer: 5
   m_Name: TouchInputs
   m_TagString: Untagged
@@ -169,19 +168,6 @@ RectTransform:
   m_AnchoredPosition: {x: 25, y: 25}
   m_SizeDelta: {x: -50, y: 128}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &7160630290519879219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160630290519879217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ControlPath: <Keyboard>/w
 --- !u!1 &7160630290981695465
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +180,6 @@ GameObject:
   - component: {fileID: 7160630290981695466}
   - component: {fileID: 7160630290981695467}
   - component: {fileID: 7160630290981694999}
-  - component: {fileID: 7160630290981694996}
   m_Layer: 5
   m_Name: GasPedal
   m_TagString: Untagged
@@ -276,62 +261,7 @@ MonoBehaviour:
     type: 3}
   belowThresholdTexture: {fileID: 21300000, guid: 6ecceefdcb370394eb4daa7bedc5241f,
     type: 3}
-  isPressed: 0
-  threshold: 0.1
---- !u!114 &7160630290981694996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160630290981695465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 72bff0c6e42335c4a997e65cfb639d2a,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7160630290981694999}
-        m_MethodName: RecieveAxis
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5e09e333-e81c-434e-b83e-42601cde9ed1
-    m_ActionName: BasicVehicle/Gas Pedal[/Keyboard/w,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5d802148-a219-4db4-a03b-4a01d02ea4b1
-    m_ActionName: BasicVehicle/Brake Pedal[/Keyboard/s,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0c959967-780b-4c26-8aca-59df0af74bb6
-    m_ActionName: BasicVehicle/Steering[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: BasicVehicle
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  drivingInstance: {fileID: 4998837989239955972}
 --- !u!1 &7160630292448961273
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +274,6 @@ GameObject:
   - component: {fileID: 7160630292448961274}
   - component: {fileID: 7160630292448961275}
   - component: {fileID: 7160630292448961252}
-  - component: {fileID: 7160630292448961255}
   m_Layer: 5
   m_Name: BrakePedal
   m_TagString: Untagged
@@ -426,62 +355,7 @@ MonoBehaviour:
     type: 3}
   belowThresholdTexture: {fileID: 21300000, guid: 8acc1c78e2d1aa94290e9a4c51f03f04,
     type: 3}
-  isPressed: 0
-  threshold: 0.1
---- !u!114 &7160630292448961255
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160630292448961273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 72bff0c6e42335c4a997e65cfb639d2a,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5e09e333-e81c-434e-b83e-42601cde9ed1
-    m_ActionName: BasicVehicle/Gas Pedal[/Keyboard/w,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7160630292448961252}
-        m_MethodName: RecieveAxis
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 5d802148-a219-4db4-a03b-4a01d02ea4b1
-    m_ActionName: BasicVehicle/Brake Pedal[/Keyboard/s,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 0c959967-780b-4c26-8aca-59df0af74bb6
-    m_ActionName: BasicVehicle/Steering[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: BasicVehicle
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  drivingInstance: {fileID: 1069076612615051393}
 --- !u!1 &7160630292553595077
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +368,6 @@ GameObject:
   - component: {fileID: 7160630292553595078}
   - component: {fileID: 7160630292553595079}
   - component: {fileID: 7160630292553595073}
-  - component: {fileID: 7160630292553595072}
   m_Layer: 5
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -572,61 +445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imageTransform: {fileID: 7160630292553595076}
+  circularTouchControl: {fileID: 8288002239570618604}
   degreesFactor: -90
---- !u!114 &7160630292553595072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7160630292553595077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 72bff0c6e42335c4a997e65cfb639d2a,
-    type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5e09e333-e81c-434e-b83e-42601cde9ed1
-    m_ActionName: BasicVehicle/Gas Pedal[/Keyboard/w,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5d802148-a219-4db4-a03b-4a01d02ea4b1
-    m_ActionName: BasicVehicle/Brake Pedal[/Keyboard/s,/Keyboard/downArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7160630292553595073}
-        m_MethodName: RecieveAxis
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0c959967-780b-4c26-8aca-59df0af74bb6
-    m_ActionName: BasicVehicle/Steering[/Keyboard/a,/Keyboard/d,/Keyboard/leftArrow,/Keyboard/rightArrow]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: BasicVehicle
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1 &9204341700956244811
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,4 +511,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6f470f34f11ad84994381a27251d58e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputControlPath: <Gamepad>/leftStick/down
+  inputControlPath: <Keyboard>/s
