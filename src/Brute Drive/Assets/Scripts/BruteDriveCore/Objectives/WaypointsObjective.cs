@@ -6,11 +6,24 @@ using BruteDriveCore.Vehicles;
 
 namespace BruteDriveCore.Objectives
 {
+    #region Event Delegates
+    /// <summary>
+    /// Listener for when a new waypoint is targeted for the waypoint objective.
+    /// </summary>
+    /// <param name="newWaypoint">The new waypoint that is targeted.</param>
+    public delegate void WaypointChangedListener(IWaypoint newWaypoint);
+    #endregion
     /// <summary>
     /// An objective where vehicles must go through a linear set of waypoints.
     /// </summary>
     public sealed class WaypointsObjective : Objective
     {
+        #region State Broadcasters
+        /// <summary>
+        /// Called when the waypoint changes.
+        /// </summary>
+        public event WaypointChangedListener WaypointChanged;
+        #endregion
         #region Fields
         private ITickProvider tickProvider;
         private IWaypoint[] waypoints;
@@ -60,6 +73,7 @@ namespace BruteDriveCore.Objectives
             // Start ticking to check against waypoints.
             if (!InProgress)
                 tickProvider.Tick += Tick;
+            WaypointChanged?.Invoke(waypoints[0]);
             base.StartObjective();
         }
         /// <summary>
@@ -95,7 +109,10 @@ namespace BruteDriveCore.Objectives
                     waypointIndex++;
                     // Are there more waypoints?
                     if (waypointIndex < waypoints.Length)
+                    {
                         waypoints[waypointIndex].IsRendered = true;
+                        WaypointChanged?.Invoke(waypoints[waypointIndex]);
+                    }
                     // If not the objective is complete.
                     else
                     {

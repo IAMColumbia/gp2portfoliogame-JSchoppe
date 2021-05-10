@@ -11,6 +11,7 @@ using UnityLibrary.TickWrappers;
 using System.Collections.Generic;
 using UnityLibrary.TopDown2D;
 using BruteDriveUnity.Designer.Objectives;
+using UnityLibrary.InstanceWrappers.Indicators;
 
 namespace BruteDrive.BootStrappers
 {
@@ -36,6 +37,7 @@ namespace BruteDrive.BootStrappers
 
         [SerializeField] private GameObject waypointPrefab = default;
         [SerializeField] private float minWaypointDistance = 10f;
+        [SerializeField] private CompassInstance compass = default;
 
         private void Start()
         {
@@ -87,6 +89,8 @@ namespace BruteDrive.BootStrappers
                 UnityTickService.GetProvider(UnityLoopType.FixedUpdate),
                 waypoints.ToArray());
 
+            objective.WaypointChanged += Objective_WaypointChanged;
+
 
             Vehicle vehicle = player.Instance();
 
@@ -101,6 +105,11 @@ namespace BruteDrive.BootStrappers
             objective.Completed += Completed;
 
             camera.Instance();
+        }
+
+        private void Objective_WaypointChanged(IWaypoint newWaypoint)
+        {
+            compass.Instance().Target = ((Vector2)newWaypoint.Location).TopDownUnflatten();
         }
 
         private void Completed(Objective completedObjective)
