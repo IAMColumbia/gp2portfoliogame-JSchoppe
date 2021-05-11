@@ -97,7 +97,12 @@ namespace BruteDrive.BootStrappers
             Vector2 direction = path[1].Location - path[0].Location;
 
             vehicle.Location = path[0].Location;
-            vehicle.Angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            // TODO this is broken; collider simulation cannot currently account for this.
+            //vehicle.Angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+
+            // Spawn two cruisers.
+            cruiserManager.TrySpawnCruiser();
+            cruiserManager.TrySpawnCruiser();
 
             objective.TriggeringVehicles.Add(vehicle);
 

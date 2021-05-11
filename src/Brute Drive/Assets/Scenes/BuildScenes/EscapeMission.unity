@@ -453,6 +453,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7433380498032160512, guid: 43ba34a33c72eed44974918af7db1ebd,
+        type: 3}
+      propertyPath: route
+      value: 
+      objectReference: {fileID: 1498077215}
+    - target: {fileID: 7433380498032160512, guid: 43ba34a33c72eed44974918af7db1ebd,
+        type: 3}
+      propertyPath: cruiserTarget
+      value: 
+      objectReference: {fileID: 1400118780}
     - target: {fileID: 7433380498032160518, guid: 43ba34a33c72eed44974918af7db1ebd,
         type: 3}
       propertyPath: m_Name
@@ -575,8 +585,8 @@ MonoBehaviour:
   roadMaterial: {fileID: 2100000, guid: 785c9fafa50140046aa553164a103cec, type: 2}
   buildingMaterial: {fileID: 2100000, guid: 736cd99d5fb65144fa9e7696b1e37030, type: 2}
   coordinates:
-    _Lat: 41.3287402039345
-    _Lng: -89.12796123905008
+    _Lat: 42.0242261722088
+    _Lng: -88.36833309610842
   desiredNodes: 300
   scanStep: 50
   maxScan: 1000

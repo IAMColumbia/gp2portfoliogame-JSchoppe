@@ -15,13 +15,15 @@ namespace BruteDrive.BootStrappers
         [SerializeField] private new VehicleCameraInstance camera = default;
 
         [SerializeField] private CruiserManager aiSpawner = default;
+        [SerializeField] private int amountOfAgentsToSpawn = 1;
 
         private void Start()
         {
             // Initialize the instances for this scene.
             player.Instance();
             camera.Instance();
-            aiSpawner.TrySpawnCruiser();
+            for (int i = 0; i < amountOfAgentsToSpawn; i++)
+                aiSpawner.TrySpawnCruiser();
         }
     }
 }

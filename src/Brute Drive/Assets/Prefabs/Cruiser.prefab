@@ -57,10 +57,10 @@ MonoBehaviour:
   steerDegreesPerSecond: 50
   maxSteerDegrees: 40
   steerRadiusFactor: 2
-  forwardsAcceleration: 10
+  forwardsAcceleration: 12
   reverseAcceleration: 8
-  forwardsMaxSpeed: 14
-  reverseMaxSpeed: 6
+  forwardsMaxSpeed: 18
+  reverseMaxSpeed: 8
   health: 1
   impactResistance: 2
 --- !u!114 &3231804571924488305

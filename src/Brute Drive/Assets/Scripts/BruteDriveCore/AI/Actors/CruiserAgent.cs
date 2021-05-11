@@ -2,6 +2,7 @@
 using GameLibrary.StateMachines;
 using BruteDriveCore.Vehicles;
 using UnityEngine;
+using GameLibrary.Math;
 
 namespace BruteDriveCore.AI.Actors
 {
@@ -44,7 +45,11 @@ namespace BruteDriveCore.AI.Actors
             /// <summary>
             /// Agent is charging a targeted vehicle.
             /// </summary>
-            Charging
+            Charging,
+            /// <summary>
+            /// Agent is backing off of a targeted vehicle.
+            /// </summary>
+            BackingOff
         }
 
         /// <summary>
@@ -57,6 +62,29 @@ namespace BruteDriveCore.AI.Actors
             vehicle.Controller = this;
             states.Add(State.Stationary, new DisabledState(this));
             states.Add(State.Charging, new ChargingState(this));
+            states.Add(State.BackingOff, new BackingOffState(this));
+
+            vehicle.VehicleHit += OnVehicleHit;
+        }
+
+        private void OnVehicleHit(VehicleHitResult hit)
+        {
+            if (hit.vehicle == Target)
+            {
+                if (CurrentState == State.Charging)
+                {
+                    CurrentState = State.BackingOff;
+                    (states[State.BackingOff] as BackingOffState).ChargingDistance = 10f;
+                }
+            }
+            else
+            {
+                if (CurrentState == State.Charging)
+                {
+                    CurrentState = State.BackingOff;
+                    (states[State.BackingOff] as BackingOffState).ChargingDistance = 7f;
+                }
+            }
         }
 
         public Vehicle Vehicle => vehicle;
@@ -127,7 +155,6 @@ namespace BruteDriveCore.AI.Actors
         {
             #region Fields
             private readonly CruiserAgent agent;
-            private bool charging;
             #endregion
             #region Constructors
             /// <summary>
@@ -137,21 +164,12 @@ namespace BruteDriveCore.AI.Actors
             public ChargingState(CruiserAgent agent)
             {
                 this.agent = agent;
-                // Set default values.
-                DesiredDistance = 10f;
-                charging = false;
             }
-            #endregion
-            #region Properties
-            /// <summary>
-            /// Controls how far the cruiser wants to be before starting a charge.
-            /// </summary>
-            public float DesiredDistance { get; set; }
             #endregion
 
             public void StateEntered()
             {
-                
+                agent.BrakePedalAmount = 0f;
             }
             public void StateExited()
             {
@@ -161,34 +179,57 @@ namespace BruteDriveCore.AI.Actors
             public void Tick(float deltaTime)
             {
                 // Steer towards the target.
-                float angle = UnityEngine.Vector2.SignedAngle(agent.vehicle.Velocity, agent.Target.Location - agent.vehicle.Location);
-
-                if (angle > 0f)
-                {
-                    agent.SteeringAngle = -1f * (angle / 180f);
-                }
-                else if (angle < 0f)
-                {
-                    agent.SteeringAngle = 1f * (angle / 180f);
-                }
-
+                float angle = UnityEngine.Vector2.SignedAngle(
+                    agent.vehicle.Velocity, agent.Target.Location - agent.vehicle.Location);
+                agent.SteeringAngle = -angle / 180f;
                 agent.GasPedalAmount = 1f;
+            }
+        }
+        private sealed class BackingOffState : IState, ITickable
+        {
+            #region Fields
+            private readonly CruiserAgent agent;
+            private float chargingDistanceSquared;
+            #endregion
+            #region Constructors
+            /// <summary>
+            /// Creates a new backing off state for the given cruiser.
+            /// </summary>
+            /// <param name="agent"></param>
+            public BackingOffState(CruiserAgent agent)
+            {
+                this.agent = agent;
+                ChargingDistance = 15f;
+            }
+            #endregion
+            #region Properties
+            /// <summary>
+            /// The distance to back off from the target
+            /// to gain speed.
+            /// </summary>
+            public float ChargingDistance
+            {
+                get => FloatMath.Sqrt(chargingDistanceSquared);
+                set => chargingDistanceSquared = value * value;
+            }
+            #endregion
 
-                if (charging)
+            public void StateEntered()
+            {
+                agent.GasPedalAmount = 0f;
+            }
+            public void StateExited()
+            {
+                
+            }
+
+            public void Tick(float deltaTime)
+            {
+                agent.BrakePedalAmount = 1f;
+                if ((agent.Vehicle.Location - agent.Target.Location).GetLengthSquared() >
+                    chargingDistanceSquared)
                 {
-
-                }
-                else
-                {
-                    if (UnityEngine.Vector2.SqrMagnitude(agent.vehicle.Location - agent.Target.Location)
-                        > DesiredDistance * DesiredDistance)
-                    {
-
-                    }
-                    else
-                    {
-
-                    }
+                    agent.CurrentState = State.Charging;
                 }
             }
         }

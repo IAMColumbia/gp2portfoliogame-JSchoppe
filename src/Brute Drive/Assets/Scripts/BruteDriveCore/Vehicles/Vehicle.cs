@@ -11,6 +11,12 @@ namespace BruteDriveCore.Vehicles
     /// </summary>
     /// <param name="vehicle">The destroyed vehicle.</param>
     public delegate void VehicleDestroyedHandler(Vehicle vehicle);
+    /// <summary>
+    /// Handler delegate for when a vehicle hits another vehicle.
+    /// Passes through the vehicle hit result information.
+    /// </summary>
+    /// <param name="hit">The vehicle hit result information.</param>
+    public delegate void VehicleHitBroadcaster(VehicleHitResult hit);
     #endregion
     /// <summary>
     /// Implements the base vehicle simulation.
@@ -38,12 +44,17 @@ namespace BruteDriveCore.Vehicles
         private float speed;
         private float steerAngle;
         private Vector2 forwards;
+        private float angleThisFrame;
         #endregion
         #region Broadcasters
         /// <summary>
         /// Called when this vehicle has been destroyed.
         /// </summary>
         public event VehicleDestroyedHandler Destroyed;
+        /// <summary>
+        /// Called when this vehicle hits another vehicle.
+        /// </summary>
+        public event VehicleHitBroadcaster VehicleHit;
         #endregion
         #region Constructors
         /// <summary>
@@ -292,7 +303,7 @@ namespace BruteDriveCore.Vehicles
             // Apply steering to the angle of the vehicle.
             // This is done relative to the current speed of the
             // vehicle to prevent pivoting in place.
-            Angle += ((Speed > 0f)? 1f : -1f) *
+            angleThisFrame = ((Speed > 0f)? 1f : -1f) *
                 steerAngle * deltaTime * Speed / steerRadiusFactor;
             // Apply the change in speed from the controller pedals.
             Speed += deltaTime * (
@@ -309,13 +320,23 @@ namespace BruteDriveCore.Vehicles
                 Speed = FloatMath.Max(0f, speed - friction);
             else
                 Speed = FloatMath.Min(0f, speed + friction);
-            // Move the body along its forward path.
-            if (Collider == null)
-                Location += forwards * deltaTime * Speed;
-            // If there is a collider use a sweep.
-            else if (Collider.MoveSweep(forwards * deltaTime * Speed, out Vehicle hitVehicle))
+            if (Speed != 0f)
             {
-
+                // Move the body along its forward path.
+                if (Collider == null)
+                    Location += forwards * deltaTime * Speed;
+                // If there is a collider use a sweep.
+                else
+                {
+                    float translation = deltaTime * Speed;
+                    VehicleSweepResult result = Collider.MoveSweep(angleThisFrame, translation);
+                    // Update the vehicle to reflect sweep hits.
+                    Speed *= result.actualDistance / translation;
+                    Angle += result.actualRotation;
+                    // Update any listeners about collisions.
+                    foreach (VehicleHitResult hitResult in result.vehicleHits)
+                        VehicleHit?.Invoke(hitResult);
+                }
             }
         }
         private void UpdateRenderer()
