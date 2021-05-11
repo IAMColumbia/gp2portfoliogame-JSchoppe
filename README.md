@@ -15,7 +15,28 @@ certain streets. Reach safety by any means necessary.
 
 </details>
 
-# Proposal Details
+## Contributors
+<div align="center">
+  <div style="display: flex;">
+    <img src="https://avatars1.githubusercontent.com/u/38409262?s=460&u=f0e7f13731979e49c5f6240ee56c6556bb88a5fa&v=4" width="50px">
+    <img src="https://avatars1.githubusercontent.com/u/1069059?s=460&u=d7795dacb9505f51922adc41b66e728f3fa54cd1&v=4" width="50px">
+    <img src="https://avatars.githubusercontent.com/u/36770934?v=4" width="50px">
+  </div>
+</div>
+
+ - Programming
+   - [Jethro Schoppenhorst](https://github.com/JSchoppe)
+ - Feedback/Code Review
+   - [Jeff Meyers](https://github.com/dsp56001)
+   - [Ian Jeannin](https://github.com/IanJeannin)
+ - Software Used
+   - [Paint.NET](https://github.com/paintdotnet)
+   - [Unity](https://github.com/Unity-Technologies)
+   - [Visual Studio](https://visualstudio.microsoft.com)
+   - [GitHub](https://github.com/github)
+
+
+## Proposal Details
 This section outlines the initial proposal for this project. Each milestone is estimated to be about 3 weeks in duration. With a total project duration of about 2 months.
 
 <details>
