@@ -1,1 +1,1 @@
-Add Propsal bit here
+(see the repo readme)

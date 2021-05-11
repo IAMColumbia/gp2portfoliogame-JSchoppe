@@ -1,1 +1,21 @@
-Release Notes version 3 Final
+4th Release Notes;
+Fixes:
+ - Fixes input controls (hopefully for all devices)
+ - Updates physics sweep to include rotation
+   - Physics sweep provides more detailed results to vehicle
+ - AI now spawns in build scene (not intelligently)
+Features:
+ - AI will now back up and recharge to gain speed after hitting player
+ - Compass arrow shows the next checkpoint
+New Known Bugs:
+ - Turning while colliding can introduce skew on the vehicle angle
+   - This visually makes it appear as though you can clip objects
+ - AI does not respond appropriately to crashing into walls
+Not Implemented/Backlogged:
+ - Penalty for driving offroad
+ - Vehicles take damage upon collision
+ - End condition handling for finishing checkpoints
+ - Better camera that damps towards vehicle angle
+ - AI pathing analysis of nearby colliders
+ - AI flocking behaviour
+ - Menus/UI
